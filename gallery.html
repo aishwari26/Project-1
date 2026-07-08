@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hello World</title>
+  <title>Gallery</title>
   <style>
     :root {
       color-scheme: dark;
@@ -50,7 +50,7 @@
     }
 
     main {
-      width: min(920px, calc(100vw - 32px));
+      width: min(980px, calc(100vw - 32px));
       padding: 56px;
       position: relative;
       isolation: isolate;
@@ -59,13 +59,6 @@
       background: linear-gradient(145deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05)), var(--glass);
       box-shadow: 0 28px 90px rgba(0, 0, 0, 0.38);
       backdrop-filter: blur(22px);
-    }
-
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 42px;
     }
 
     main::before {
@@ -81,6 +74,13 @@
       mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
       mask-composite: exclude;
       padding: 1px;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 42px;
     }
 
     .eyebrow {
@@ -106,7 +106,7 @@
     h1 {
       margin: 0;
       max-width: 780px;
-      font-size: clamp(4rem, 13vw, 8.5rem);
+      font-size: clamp(3.2rem, 10vw, 7.2rem);
       line-height: 0.9;
       letter-spacing: 0;
     }
@@ -121,18 +121,65 @@
     }
 
     p {
-      max-width: 620px;
+      max-width: 650px;
       margin: 28px 0 0;
       color: var(--muted);
       font-size: clamp(1rem, 2vw, 1.24rem);
       line-height: 1.7;
     }
 
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 14px;
       margin-top: 34px;
+    }
+
+    .piece {
+      min-height: 170px;
+      display: grid;
+      align-content: end;
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.20);
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .piece::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--art);
+      opacity: 0.95;
+      transition: transform 220ms ease;
+    }
+
+    .piece::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(5, 10, 20, 0.78), transparent 65%);
+    }
+
+    .piece:hover::before {
+      transform: scale(1.06);
+    }
+
+    .piece strong,
+    .piece span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .piece strong {
+      font-size: 1.05rem;
+    }
+
+    .piece span {
+      margin-top: 5px;
+      color: var(--muted);
     }
 
     a {
@@ -150,6 +197,12 @@
       transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
     }
 
+    a:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.46);
+      background: rgba(255, 255, 255, 0.18);
+    }
+
     nav a {
       min-height: 38px;
       padding: 0 14px;
@@ -162,23 +215,6 @@
       background: var(--gold);
     }
 
-    a:hover {
-      transform: translateY(-2px);
-      border-color: rgba(255, 255, 255, 0.46);
-      background: rgba(255, 255, 255, 0.18);
-    }
-
-    .primary {
-      color: #07101c;
-      border-color: transparent;
-      background: linear-gradient(90deg, var(--cyan), var(--green));
-      box-shadow: 0 18px 34px rgba(79, 227, 255, 0.20);
-    }
-
-    .primary:hover {
-      background: linear-gradient(90deg, #78ecff, #adffd0);
-    }
-
     @keyframes drift {
       from {
         transform: translateY(0);
@@ -188,7 +224,7 @@
       }
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 760px) {
       body {
         place-items: stretch;
         overflow: auto;
@@ -198,14 +234,12 @@
         min-height: 100vh;
         width: 100%;
         padding: 40px 24px;
-        display: grid;
-        align-content: center;
         border-width: 0;
         border-radius: 0;
       }
 
-      .actions {
-        flex-direction: column;
+      .gallery {
+        grid-template-columns: 1fr;
       }
 
       a {
@@ -218,21 +252,43 @@
   <div class="stars" aria-hidden="true"></div>
   <main>
     <nav aria-label="Main navigation">
-      <a href="index.html" aria-current="page">Home</a>
+      <a href="index.html">Home</a>
       <a href="about.html">About</a>
-      <a href="gallery.html">Gallery</a>
+      <a href="gallery.html" aria-current="page">Gallery</a>
       <a href="contact.html">Contact</a>
     </nav>
-    <p class="eyebrow"><span class="spark"></span>First page energy</p>
-    <h1>Hello <span>World.</span></h1>
+    <p class="eyebrow"><span class="spark"></span>Visual collection</p>
+    <h1>Gallery <span>glow.</span></h1>
     <p>
-      A tiny HTML file dressed up with glass, glow, motion, and a little cosmic polish.
-      It is ready to open, admire, and make your folder feel instantly more alive.
+      A compact showcase of luminous panels, made to feel like a tiny exhibition wall
+      inside your fancy Hello World site.
     </p>
-    <div class="actions">
-      <a class="primary" href="about.html">Meet the page</a>
-      <a href="contact.html">Say hello</a>
-    </div>
+    <section class="gallery" aria-label="Gallery items">
+      <div class="piece" style="--art: linear-gradient(135deg, #4fe3ff, #182a74 45%, #ff6fae);">
+        <strong>Neon Horizon</strong>
+        <span>Cool light, warm finish.</span>
+      </div>
+      <div class="piece" style="--art: radial-gradient(circle at 30% 25%, #ffd166, transparent 24%), linear-gradient(135deg, #26315f, #8ef7b5);">
+        <strong>Solar Bloom</strong>
+        <span>A bright little pulse.</span>
+      </div>
+      <div class="piece" style="--art: linear-gradient(145deg, #ff6fae, #21132a 48%, #4fe3ff);">
+        <strong>Prism Night</strong>
+        <span>Color after dark.</span>
+      </div>
+      <div class="piece" style="--art: radial-gradient(circle at 75% 20%, #8ef7b5, transparent 22%), linear-gradient(135deg, #06111f, #405de6);">
+        <strong>Orbit Field</strong>
+        <span>Soft motion energy.</span>
+      </div>
+      <div class="piece" style="--art: linear-gradient(135deg, #ffd166, #ff6fae 52%, #14172c);">
+        <strong>Golden Signal</strong>
+        <span>Small page, big shine.</span>
+      </div>
+      <div class="piece" style="--art: radial-gradient(circle at 50% 45%, #ffffff, transparent 14%), linear-gradient(135deg, #4fe3ff, #8ef7b5 45%, #21132a);">
+        <strong>Glass Star</strong>
+        <span>A polished final spark.</span>
+      </div>
+    </section>
   </main>
 </body>
 </html>
