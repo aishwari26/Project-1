@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hello World</title>
+  <title>About</title>
   <style>
     :root {
       color-scheme: dark;
@@ -61,13 +61,6 @@
       backdrop-filter: blur(22px);
     }
 
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 42px;
-    }
-
     main::before {
       content: "";
       position: absolute;
@@ -81,6 +74,13 @@
       mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
       mask-composite: exclude;
       padding: 1px;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 42px;
     }
 
     .eyebrow {
@@ -106,7 +106,7 @@
     h1 {
       margin: 0;
       max-width: 780px;
-      font-size: clamp(4rem, 13vw, 8.5rem);
+      font-size: clamp(3.2rem, 10vw, 7.2rem);
       line-height: 0.9;
       letter-spacing: 0;
     }
@@ -121,11 +121,38 @@
     }
 
     p {
-      max-width: 620px;
+      max-width: 650px;
       margin: 28px 0 0;
       color: var(--muted);
       font-size: clamp(1rem, 2vw, 1.24rem);
       line-height: 1.7;
+    }
+
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .fact {
+      min-height: 118px;
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .fact strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--ink);
+      font-size: 1.02rem;
+    }
+
+    .fact span {
+      color: var(--muted);
+      line-height: 1.45;
     }
 
     .actions {
@@ -150,6 +177,12 @@
       transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
     }
 
+    a:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.46);
+      background: rgba(255, 255, 255, 0.18);
+    }
+
     nav a {
       min-height: 38px;
       padding: 0 14px;
@@ -160,12 +193,6 @@
       color: #07101c;
       border-color: transparent;
       background: var(--gold);
-    }
-
-    a:hover {
-      transform: translateY(-2px);
-      border-color: rgba(255, 255, 255, 0.46);
-      background: rgba(255, 255, 255, 0.18);
     }
 
     .primary {
@@ -188,7 +215,7 @@
       }
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 720px) {
       body {
         place-items: stretch;
         overflow: auto;
@@ -198,10 +225,12 @@
         min-height: 100vh;
         width: 100%;
         padding: 40px 24px;
-        display: grid;
-        align-content: center;
         border-width: 0;
         border-radius: 0;
+      }
+
+      .facts {
+        grid-template-columns: 1fr;
       }
 
       .actions {
@@ -218,19 +247,33 @@
   <div class="stars" aria-hidden="true"></div>
   <main>
     <nav aria-label="Main navigation">
-      <a href="hello-world.html" aria-current="page">Home</a>
-      <a href="about.html">About</a>
+      <a href="hello-world.html">Home</a>
+      <a href="about.html" aria-current="page">About</a>
       <a href="contact.html">Contact</a>
     </nav>
-    <p class="eyebrow"><span class="spark"></span>First page energy</p>
-    <h1>Hello <span>World.</span></h1>
+    <p class="eyebrow"><span class="spark"></span>About this little site</p>
+    <h1>Built to <span>shine.</span></h1>
     <p>
-      A tiny HTML file dressed up with glass, glow, motion, and a little cosmic polish.
-      It is ready to open, admire, and make your folder feel instantly more alive.
+      This mini website turns a classic first page into a polished three-page experience,
+      with a consistent look, smooth navigation, and a little bit of personality in every corner.
     </p>
+    <section class="facts" aria-label="Highlights">
+      <div class="fact">
+        <strong>Stylish</strong>
+        <span>Glass panels, luminous accents, and crisp spacing keep it modern.</span>
+      </div>
+      <div class="fact">
+        <strong>Simple</strong>
+        <span>Each page is plain HTML and CSS, so it opens directly from the folder.</span>
+      </div>
+      <div class="fact">
+        <strong>Connected</strong>
+        <span>Home, About, and Contact are linked together for easy browsing.</span>
+      </div>
+    </section>
     <div class="actions">
-      <a class="primary" href="about.html">Meet the page</a>
-      <a href="contact.html">Say hello</a>
+      <a class="primary" href="contact.html">Get in touch</a>
+      <a href="hello-world.html">Back home</a>
     </div>
   </main>
 </body>
